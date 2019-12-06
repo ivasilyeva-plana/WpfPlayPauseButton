@@ -1,0 +1,26 @@
+﻿<Window x:Class="PlayPauseButton.PlayButton"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PlayPauseButton"
+        mc:Ignorable="d"
+        Title="Play button sample" Height="450" Width="800">
+    <Button Width="40" Height="40" Click="Button_OnClick">
+        <Button.Template>
+            <ControlTemplate TargetType="{x:Type Button}">
+                <Grid>
+                    <Ellipse Stroke="Black" />
+
+                    <Image Source="Play.png" Visibility="{Binding Path=IsPlaying, 
+                    Converter={local:BoolToVisibilityConverter}, 
+                    ConverterParameter={x:Static Visibility.Hidden}}" />
+
+                    <Image Source="Pause.png" Visibility="{Binding Path=IsPlaying, 
+                    Converter={local:BoolToVisibilityConverter}, 
+                    ConverterParameter={x:Static Visibility.Visible}}" />
+                </Grid>
+            </ControlTemplate>
+        </Button.Template>
+    </Button>
+</Window>
